@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+  <title>Binário</title>
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+
+  <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/bulma/0.4.2/css/bulma.min.css'>
+
+      <link rel="stylesheet" href="css/style.css">
+
+  
+</head>
+
+<body>
+  
+<div id="app">
+  <div class="columns">
+    <div class="column is-offset-one-quarter">
+      <template v-for="type in typeConversions">
+        <div class="field">
+          <label class="label">{{ type.name }}</label>
+          <div class="control">
+            <input class="input" v-model="type.result" type="text" disabled="disabled"/>
+          </div>
+        </div>
+      </template>
+      <hr/>
+      <div class="field">
+        <div class="control">
+          <input class="input" v-model="input" type="text" placeholder="Input" v-bind:disabled="selectedType.length &lt;= 0"/>
+        </div>
+      </div>
+      <div class="select">
+        <select v-model="selectedType">
+          <option value="nulled" disabled="disabled">Select input base type</option>
+          <template v-for="type in typeConversions">
+            <option :value="type.value">{{ type.name }}</option>
+          </template>
+        </select>
+      </div>
+      <hr/>
+      <button class="button is-primary" @click="calculate()">Calculate</button>
+      <button class="button is-primary" @click="reset()" style="float: right">Reset</button>
+    </div>
+  </div>
+</div>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.3.4/vue.min.js'></script>
+
+    <script src="js/index.js"></script>
+
+</body>
+</html>
