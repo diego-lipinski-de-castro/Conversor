@@ -1,0 +1,25 @@
+div#app
+	.columns
+		.column.is-offset-one-quarter
+			template(v-for="type in typeConversions")
+				.field
+					label.label {{ type.name }}
+					.control
+						input.input(v-model="type.result" type="text" disabled)
+					
+			hr
+			
+			.field
+				.control
+					input.input(v-model="input" type="text" placeholder="Input" v-bind:disabled="selectedType.length <= 0")
+			
+			.select
+				select(v-model="selectedType")
+					option(value="nulled" disabled) Select input base type
+					template(v-for="type in typeConversions")
+						option(:value="type.value") {{ type.name }}
+
+			hr
+			
+			button.button.is-primary(@click="calculate()") Calculate
+			button.button.is-primary(@click="reset()" style="float: right") Reset
